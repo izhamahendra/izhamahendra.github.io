@@ -1,9 +1,13 @@
 ---
 import '../styles/global.css';
+import {
+  siWordpress, siWebflow, siShopify, siSquarespace, siJavascript,
+  siPhp, siFigma, siGoogleanalytics, siMailchimp, siGit
+} from 'simple-icons';
 
 const skills = [
-  'WordPress', 'Webflow', 'Shopify', 'Squarespace', 'JavaScript', 'PHP',
-  'HTML Email', 'Figma', 'Google Analytics', 'Mailchimp', 'Git'
+  siWordpress, siWebflow, siShopify, siSquarespace, siJavascript,
+  siPhp, siFigma, siGoogleanalytics, siMailchimp, siGit
 ];
 
 const experience = [
@@ -108,7 +112,18 @@ const experience = [
 
       <section id="stack" class="stack section-shell">
         <div class="section-heading"><p class="section-label">04 / Stack</p><p>A practical toolkit for modern web delivery.</p></div>
-        <div class="skills">{skills.map((skill, index) => <span><b>{String(index + 1).padStart(2, '0')}</b>{skill}</span>)}</div>
+        <div class="logo-marquee" aria-label="Technologies and tools I use">
+          <div class="logo-track">
+            {[...skills, ...skills].map((skill, index) => (
+              <div class="logo-item" aria-hidden={index >= skills.length ? 'true' : undefined}>
+                <svg viewBox="0 0 24 24" role="img" aria-label={skill.title} aria-hidden={index >= skills.length ? 'true' : undefined}>
+                  <path d={skill.path}></path>
+                </svg>
+                <span>{skill.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section class="contact section-shell">
